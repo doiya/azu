@@ -37,7 +37,7 @@ post '/callback' do
         tf.write(response.body)
 
       when Line::Bot::Event::Postback # Postbackの場合
-        if event.postback["action"] == "keep"
+        if event.postback["data"] == "keep"
           client.reply_message(event['replyToken'], reply_message("キープする"))
         end
       end
