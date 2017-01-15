@@ -39,6 +39,7 @@ post '/callback' do
       when Line::Bot::Event::Postback # Postbackの場合
         if event.postback["action"] == "keep"
           client.reply_message(event['replyToken'], reply_message("キープする"))
+        end
       end
     end
   }
