@@ -17,14 +17,19 @@ def reply_template_museum(data)
 	  "template": {
 	      "type": "buttons",
 	      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-	      "title": data["title"] + ' ' + data["area"],
+	      "title": data["title"] + '\n' + data["area"],
 	      "text": data["body"],
 	      "actions": [
 	          {
 	            "type": "uri",
 	            "label": "詳しく",
 	            "uri": data["url"]
-	          }
+	          },
+            {
+            "type": "postback",
+            "label": "Keep",
+            "data": "keep"
+          },
 	      ]
 	  }
 	}

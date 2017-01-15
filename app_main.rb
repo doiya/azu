@@ -35,6 +35,10 @@ post '/callback' do
         response = client.get_message_content(event.message['id'])
         tf = Tempfile.open("content")
         tf.write(response.body)
+
+      when Line::Bot::Event::Postback # Postbackの場合
+        if event.postback["action"] == "keep"
+          client.reply_message(event['replyToken'], reply_message("キープする"))
       end
     end
   }
