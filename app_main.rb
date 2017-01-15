@@ -29,7 +29,8 @@ post '/callback' do
         if event.message['text'] =~ /情報/
 	        client.reply_message(event['replyToken'], reply_template_museum(reply_data))
         else
-	        client.reply_message(event['replyToken'], reply_message(event.message['text']))
+#	        client.reply_message(event['replyToken'], reply_message(event.message['text']))
+          client.reply_message(event['replyToken'], reply_message("ki-pu"))
   			end
       when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
         response = client.get_message_content(event.message['id'])
@@ -37,7 +38,7 @@ post '/callback' do
         tf.write(response.body)
       end
     when Line::Bot::Event::Postback # Postbackの場合
-      if event.postback["action"]["data"] == "keep"
+      if event.postback["data"] == "keep"
         client.reply_message(event['replyToken'], reply_message("キープする"))
       end
     end
