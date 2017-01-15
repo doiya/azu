@@ -39,7 +39,7 @@ post '/callback' do
       end
     when Line::Bot::Event::Postback # Postbackの場合
       #if event["actions"]["data"] == "keep"
-        client.reply_message(event['replyToken'], reply_message(event.to_s))
+        client.reply_message(event['replyToken'], reply_message(event.postback.data))
       #end
     end
   }
