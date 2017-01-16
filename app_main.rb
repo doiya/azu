@@ -1,8 +1,9 @@
 require 'sinatra'
 require 'line/bot'
 require './messages'
+require './library'
 get '/' do
-	reply_template_museum(reply_data).to_s
+  rand_genre[:url]
 end
 
 def client
@@ -26,10 +27,11 @@ post '/callback' do
     when Line::Bot::Event::Message
       case event.type
       when Line::Bot::Event::MessageType::Text
-        if event.message['text'] =~ /カルーセル/
+        if event.message['text'] =~ /寝かせて/
+          #client.reply_message(event['replyToken'], reply_message('少しお待ちください'))
           client.reply_message(event['replyToken'], reply_carousel_museums(reply_museum_datas))
-        elsif event.message['text'] =~ /ボタン/
-	        client.reply_message(event['replyToken'], reply_buttons_museum(reply_museum_data))
+        elsif event.message['text'] =~ /情報/
+	        client.reply_message(event['replyToken'], reply_template_museum(reply_museum_data))
         else
 	        client.reply_message(event['replyToken'], reply_message(event.message['text']))
   			end
@@ -38,22 +40,11 @@ post '/callback' do
         tf = Tempfile.open("content")
         tf.write(response.body)
       end
+    end
     # Postbackの場合
     when Line::Bot::Event::Postback
       if event["postback"]["data"] =~ /keep/
         client.reply_message(event['replyToken'], reply_message(event["postback"]["data"]))
-        # keepする replry_museum_data を作成
-=begin
-        res = {}
-        res["title"] = event.elements['Event/Name'].text
-        res["url"]   = event.elements['Event'].attribute('href').to_s
-        res["area"]  = event.elements['Event/Venue/Area'].text
-        res["body"]  =  event.elements['Event/Description'].text.slice(0,60)
-
-        url = event["postback"]["data"]
-        client.reply_message(event['replyToken'], reply_buttons_museum(reply_museum_data()))
-=end
-
       end
     end
   }
