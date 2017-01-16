@@ -27,7 +27,7 @@ def reply_template_museum(data)
 	          },
             {
               "type": "postback",
-              "label": "Keep",
+              "label": "Keepする",
               "data": "keep"
           },
 	      ]
