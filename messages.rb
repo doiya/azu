@@ -17,7 +17,7 @@ def reply_template_museum(data)
 	  "template": {
 	      "type": "buttons",
 	      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-	      "title": data["title"] + '\n' + data["area"],
+	      "title": data["title"] + "\n" + data["area"],
 	      "text": data["body"],
 	      "actions": [
 	          {
@@ -28,7 +28,7 @@ def reply_template_museum(data)
             {
             "type": "postback",
             "label": "Keep",
-            "data": data
+            "data": data["url"]
           },
 	      ]
 	  }
