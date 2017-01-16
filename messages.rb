@@ -28,7 +28,7 @@ def reply_template_museum(data)
             {
               "type": "postback",
               "label": "Keepする",
-              "data": "keep" + data["url"] 
+              "data": "keep, " + data.to_s 
           },
 	      ]
 	  }
