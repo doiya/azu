@@ -43,7 +43,7 @@ def hoge(museum)
       {
         "type"; "postback",
         "label": "keep",
-        "data": "keep"  + museum.to_s
+        "data": "keep"  #+ museum.to_s
       }
     ]
   }
@@ -107,7 +107,7 @@ def reply_buttons_museum(museum)
             {
               "type": "postback",
               "label": "keep",
-              "data": "keep" + museum.to_s
+              "data": "keep" #+ museum.to_s
             }
 	      ]
 	  }
