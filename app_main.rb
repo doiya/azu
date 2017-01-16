@@ -39,7 +39,7 @@ post '/callback' do
     # Postbackの場合
     when Line::Bot::Event::Postback
       if event["postback"]["label"] =~ /Keep/
-        client.reply_message(event['replyToken'], reply_message(event["postback"]["data"])
+        client.reply_message(event['replyToken'], reply_message(event["postback"]["data"]))
       end
     end
   }
