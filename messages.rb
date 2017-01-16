@@ -26,9 +26,9 @@ def reply_template_museum(data)
 	            "uri": data["url"]
 	          },
             {
-            "type": "postback",
-            "label": "Keep",
-            "data": "キープする"
+              "type": "postback",
+              "label": "Keep",
+              "data": "キープ"
           },
 	      ]
 	  }
